@@ -1,16 +1,19 @@
+from random import randint
+
 divisores=[]
 no_salir=True
 
 while no_salir:
-    try:
-        numero=int(input("Introduce un numero: "))
-        no_salir=False
-        for n in range(2, numero//2):
-            if numero%n==0:
+    divisores.clear()
+    aleatorio=randint(10000000, 50000000)
+    
+    if aleatorio%2==0:
+        divisores.append(aleatorio//2)
+    else:
+        for n in range(2, aleatorio//2):
+            if aleatorio%n==0:
                 divisores.append(n)
-        if divisores:
-            print(f"{numero} no es primo")
-        else:
-            print(f"{numero} es primo.")
-    except Exception:
-        print("No has introducido un numero.")
+        if not divisores:
+            no_salir=False
+
+print(f"El numero {aleatorio} es primo.")
